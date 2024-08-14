@@ -25,7 +25,7 @@ const OpenInterface = (props) => {
   return (
     <div>
       <h1>Room Code</h1>
-      <input id="room" type="text" autoCapitalize="true"/>
+      <input id="room" type="text" autoCapitalize="true" autoComplete="off"/>
       <h1>Name</h1>
       <input id="name" type="text" autoCapitalize="true"/>
       <br />
