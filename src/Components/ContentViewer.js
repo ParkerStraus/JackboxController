@@ -4,7 +4,7 @@ import ParsedContent from './ParsedContent';
 import OpenInterface from './OpenInterface';
 
 const ContentViewer = ({ content, ws }) => {
-    let values = {};
+    
 
     let data = {
         method: 'playSend',

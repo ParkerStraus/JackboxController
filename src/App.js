@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:8081');
-
+    setMessage("");
     ws.onopen = () => {
       console.log('Connected to Controller server');
     };
