@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import ContentViewer from './Components/ContentViewer';
-
+// aPP STARTS HERE
 function App() {
   const [message, setMessage] = useState("");
   const [controllerWs, setControllerWs] = useState(null);
