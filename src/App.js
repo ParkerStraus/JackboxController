@@ -1,32 +1,41 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import ContentViewer from './Components/ContentViewer';
-// aPP STARTS HERE
+
 function App() {
   const [message, setMessage] = useState("");
   const [controllerWs, setControllerWs] = useState(null);
   const [remoteContent, setRemoteContent] = useState("");
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8081');
-    setMessage("");
+    const ws = new WebSocket('ws://54.67.79.113:8081');
+
     ws.onopen = () => {
       console.log('Connected to Controller server');
     };
 
     ws.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      console.log(data);
-      switch(data.method){
-        case "content":
-          setRemoteContent(data.data); // Ensure data.data is a string
-          break;
-        case "norooom":
-          console.log("No Room found");
-          break;
-        default:
-          break;
+      try {
+        const data = JSON.parse(event.data);
+        console.log(data);
+        switch (data.method) {
+          case "content":
+            setRemoteContent(data.data); // Ensure data.data is a string
+            break;
+          case "norooom":
+            console.log("No Room found");
+            break;
+          default:
+            console.log("Unknown method:", data.method);
+            break;
+        }
+      } catch (error) {
+        console.error("Error parsing message:", error);
       }
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket Error:", error);
     };
 
     ws.onclose = () => {
