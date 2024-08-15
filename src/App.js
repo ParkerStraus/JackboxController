@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const ws = new WebSocket('ws://54.67.79.113:8081');
-
+    setMessage(""); //Written to avoid Error:  'setMessage' is assigned a value but never used  no-unused-vars
     ws.onopen = () => {
       console.log('Connected to Controller server');
     };
